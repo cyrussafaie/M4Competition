@@ -1,0 +1,15 @@
+[0] Config.pm:302> INFO - This is Biber 2.10
+[0] Config.pm:305> INFO - Logfile is 'm4competition_report.blg'
+[45] biber-MSWIN32:313> INFO - === 
+[96] Biber.pm:371> INFO - Reading 'm4competition_report.bcf'
+[252] Biber.pm:857> INFO - Found 2 citekeys in bib section 0
+[277] Biber.pm:3976> INFO - Processing section 0
+[305] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[313] bibtex.pm:1490> INFO - LaTeX decoding ...
+[327] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
+[408] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[408] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[408] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[408] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[420] bbl.pm:617> INFO - Writing 'm4competition_report.bbl' with encoding 'UTF-8'
+[422] bbl.pm:720> INFO - Output to m4competition_report.bbl

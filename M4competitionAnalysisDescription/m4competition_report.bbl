@@ -1,0 +1,134 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{forecast}{manual}{}
+      \name{author}{10}{}{%
+        {{hash=26cab5588ef760169b2a464b6f3ca8a6}{%
+           family={Hyndman},
+           familyi={H\bibinitperiod},
+           given={Rob},
+           giveni={R\bibinitperiod}}}%
+        {{hash=95cfbf5a8396e08b434cc6f7f5b18dc8}{%
+           family={Athanasopoulos},
+           familyi={A\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=fb7be81f0574878d688bb03f0abb8502}{%
+           family={Bergmeir},
+           familyi={B\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6db33be6996477eac7e9becb97d42e3d}{%
+           family={Caceres},
+           familyi={C\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f68e2bd3f1222cd80fdf9feb111e6878}{%
+           family={Chhay},
+           familyi={C\bibinitperiod},
+           given={Leanne},
+           giveni={L\bibinitperiod}}}%
+        {{hash=b78ae24e12b0542cb7c21cfc4f364f74}{%
+           family={O'Hara-Wild},
+           familyi={O\bibinithyphendelim W\bibinitperiod},
+           given={Mitchell},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8a8906bc431b0399f6be129d2e1271a1}{%
+           family={Petropoulos},
+           familyi={P\bibinitperiod},
+           given={Fotios},
+           giveni={F\bibinitperiod}}}%
+        {{hash=dfa52f28e37461a6153834f675b44ea4}{%
+           family={Razbash},
+           familyi={R\bibinitperiod},
+           given={Slava},
+           giveni={S\bibinitperiod}}}%
+        {{hash=7325ea25da301caccb3ac5eff724bc95}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Earo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=af5134f74c186665ee1a2376460a4e3e}{%
+           family={Yasmeen},
+           familyi={Y\bibinitperiod},
+           given={Farah},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{4490bacc32786e3e7a12e31b0edc34f8}
+      \strng{fullhash}{fdb004dfd89451e6f7c6fbb8716dbbc8}
+      \strng{bibnamehash}{fdb004dfd89451e6f7c6fbb8716dbbc8}
+      \strng{authorbibnamehash}{fdb004dfd89451e6f7c6fbb8716dbbc8}
+      \strng{authornamehash}{4490bacc32786e3e7a12e31b0edc34f8}
+      \strng{authorfullhash}{fdb004dfd89451e6f7c6fbb8716dbbc8}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 8.3}
+      \field{title}{{forecast}: Forecasting functions for time series and linear models}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb http://pkg.robjhyndman.com/forecast
+      \endverb
+      \verb{url}
+      \verb http://pkg.robjhyndman.com/forecast
+      \endverb
+    \endentry
+    \entry{fforms}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0c411fcbcd3922fb25dc2d875292ddf2}{%
+           family={Talagala},
+           familyi={T\bibinitperiod},
+           given={Thiyanga\bibnamedelima S},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=100217a51bc73b09255a8a65a1a5e504}{%
+           family={Hyndman},
+           familyi={H\bibinitperiod},
+           given={Rob\bibnamedelima J},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=95cfbf5a8396e08b434cc6f7f5b18dc8}{%
+           family={Athanasopoulos},
+           familyi={A\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{349a290a71ce2bc95d7b386a908f633c}
+      \strng{fullhash}{349a290a71ce2bc95d7b386a908f633c}
+      \strng{bibnamehash}{349a290a71ce2bc95d7b386a908f633c}
+      \strng{authorbibnamehash}{349a290a71ce2bc95d7b386a908f633c}
+      \strng{authornamehash}{349a290a71ce2bc95d7b386a908f633c}
+      \strng{authorfullhash}{349a290a71ce2bc95d7b386a908f633c}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Technical Report 6/18, Monash University.}
+      \field{title}{Meta-learning how to forecast time series}
+      \field{year}{2018}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
