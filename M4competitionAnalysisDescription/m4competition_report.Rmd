@@ -27,6 +27,8 @@ knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
 library(ggplot2)
 ```
 
+**Team members: Thiyanga Talagala (PhD student), George Athanasopoulos, Rob J Hyndman**
+
 #Introduction
 
 We use Feature-based FORecast-Model Selection (FFORMS) framework introduced in [@fforms] over the course of the M4 forecasting competition. The underlying approach involves computing a vector of features from the time series we will be forecasting which are then used to select the forecasting model. The model selection process is carried out using a classification algorithm -- we use the time series features as inputs, and the best forecasting model as the output. A Random Forest approach is used to develop the classifier. The classification algorithm can be built in advance of the forecasting exercise (so it is an “offline” procedure). Then, when we have a new time series to forecast, we can quickly compute its features, use the pre-trained classification algorithm to identify the best forecasting model, and produce the required forecasts. Thus, the “online” part of our algorithm requires only feature computation, and the application of a single forecasting model, with no need to estimate large numbers of models within a class, or to carry out a computationally-intensive cross-validation procedure. This framework is implemented in the open source R package `seer` and is publicly available on github (https://github.com/thiyangt/seer). 
