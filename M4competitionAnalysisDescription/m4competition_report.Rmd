@@ -29,7 +29,7 @@ library(ggplot2)
 
 #Introduction
 
-We use Feature-based FORecast-Model Selection (FFORMS) framework introduced in our paper [@fforms] over the course of the M4 forecasting competition. The underlying approach involves computing a vector of features from the time series which are then used to select the forecasting model. The model selection process is carried out using a classification algorithm -- we use the time series features as inputs, and the best forecasting algorithm as the output. A Random Forest approach is used to develop the classifier. The classification algorithm can be built in advance of the forecasting exercise (so it is an “offline” procedure). Then, when we have a new time series to forecast, we can quickly compute its features, use the pre-trained classification algorithm to identify the best forecasting model, and produce the required forecasts. Thus, the “online” part of our algorithm requires only feature computation, and the application of a single forecasting model, with no need to estimate large numbers of models within a class, or to carry out a computationally-intensive cross-validation procedure. This framework is implemented in the open source R package `seer` and is publicly available on github (https://github.com/thiyangt/seer). 
+We use Feature-based FORecast-Model Selection (FFORMS) framework introduced in [@fforms] over the course of the M4 forecasting competition. The underlying approach involves computing a vector of features from the time series we will be forecasting which are then used to select the forecasting model. The model selection process is carried out using a classification algorithm -- we use the time series features as inputs, and the best forecasting model as the output. A Random Forest approach is used to develop the classifier. The classification algorithm can be built in advance of the forecasting exercise (so it is an “offline” procedure). Then, when we have a new time series to forecast, we can quickly compute its features, use the pre-trained classification algorithm to identify the best forecasting model, and produce the required forecasts. Thus, the “online” part of our algorithm requires only feature computation, and the application of a single forecasting model, with no need to estimate large numbers of models within a class, or to carry out a computationally-intensive cross-validation procedure. This framework is implemented in the open source R package `seer` and is publicly available on github (https://github.com/thiyangt/seer). 
 
 #FFORMS framework: application to M4 competition data
 
@@ -44,7 +44,7 @@ As shown in \autoref{fig:framework}, the FFORMS framework consists of two main c
 
 ### observed sample
 
-We split the time series in the M4 competition into training set and test set. The time series in the training set is used as the set of observed time series. The time series in the test set are used to evaluate the classification models. Further, for yearly, quarterly and monthly time series in addition to the time series provided in the M4 competition we used the time series of M1 and M3 competitions. Table \ref{observedsample} summarizes the number of time series in the observed sample and the test set in each frequency category.
+We split the time series in the M4 competition into training set and test set. The time series in the training set are used as the set of observed time series. The time series in the test set are used to evaluate the classification models. Further, for yearly, quarterly and monthly time series in addition to the time series provided in the M4 competition we used the time series of M1 and M3 competitions. Table \ref{observedsample} summarizes the number of time series in the observed sample and the test set in each frequency category.
 
 \begin{table}[!h]
 \centering
@@ -80,11 +80,11 @@ forecast based on multiple seasonal decomposition &  &  &  & \checkmark & \check
 \end{tabular}
 \end{table}
 
-As shown in \autoref{fig:framework}, the observed time series and the simulated time series forms the reference to build our classification algorithms. Once we create the reference set for random forest training we split each time series in the reference set into training period and test period. 
+As shown in \autoref{fig:framework}, the observed time series and the simulated time series form the reference to build our classification algorithm. Once we create the reference set for random forest training we split each time series in the reference set into training period and test period. 
 
 ### Input: features
 
-The FFORMS framework operates on the features of the time series. For each time series in the reference set features are calculated based on the training period of the time series. The description of the features calculated under each frequency category is shown in Table \ref{feature}. A comprehensive description of the features used in the experiment is given in @fforms.
+The FFORMS framework operates on the features of the time series. For each time series in the reference set features are calculated based on the training period of the time series. 
 
 \begin{table}[!htp]
 \centering\footnotesize\tabcolsep=0.12cm
@@ -132,10 +132,11 @@ The FFORMS framework operates on the features of the time series. For each time 
  \end{tabular}
 \end{table}
 
+The description of the features calculated under each frequency category is shown in Table \ref{feature}. A comprehensive description of the features used in the experiment is given in @fforms.
 
 ### Output: class-labels
 
-In addition to the class labels describe used by @fforms we include some more class labels when applying FFORMS framework to the M4 competition time series. The description of class labels considered under each frequency category is shown in Table \ref{classlabels}. We fit the corresponding models outlined in Table \ref{classlabels} to each series in the reference set. The models are estimated using the training period for each series, and forecasts are produced for the whole of the test periods. The `auto.arima` and `ets` functions in the forecast package are used to identify the suitable (S)ARIMA and ETS models. In order to identify the "best" forecast-model for each time series in the reference set we derive a measure based on the mean Absolute Scaled Error (MASE) and the symmetric Mean Absolute Percentage Error (MAPE). The measurement we used to identify best forecast-model is calculated as follows: For each series under the forecast-models we consider, both forecast error measures MASE and sMAPE are calculated. Then each value is standardized using the median MASE and median sMAPE calculated across the methods for each individual time series. Then the mean of scaled MASE and scaled sMAPE is calculated for each model we consider. The model corresponding to the smallest mean value for the test period is selected as the output class-label. Most of the labels given in Table \ref{classlabels} are self-explanatory labels. In STL-AR, mstlets, and mstlarima, first STL decomposition method applied to the time series and then seasonal naive method is used to forecast the seasonal component. Finally,  AR, ETS and ARIMA models are used to forecast seasonally adjusted data respectively.
+In addition to the class labels used by @fforms we include some more class labels when applying the FFORMS framework to the M4 competition time series. The description of class labels considered under each frequency is shown in Table \ref{classlabels}. We fit the corresponding models outlined in Table \ref{classlabels} to each series in the reference set. The models are estimated using the training period for each series, and forecasts are produced for the test periods. 
 
 \begin{table}[!htp]
 \centering\footnotesize\tabcolsep=0.12cm
@@ -158,16 +159,20 @@ ETStrendseasonal & ETS with trend and seasonal components & - & \checkmark & - &
 ETSdampedtrendseasonal & ETS with damped trend and seasonal components & - & \checkmark & - & -\\
 ETSseasonalonly & ETS with seasonal components and without trend component & -  & \checkmark & - & - \\
 snaive & seasonal naive method & \checkmark & \checkmark & \checkmark & \checkmark \\
-tbats & seasonal naive method & - & \checkmark & \checkmark & \checkmark \\
+tbats & TBATS forecasting & - & \checkmark & \checkmark & \checkmark \\
 nn & neural network time series forecasts & \checkmark & \checkmark & \checkmark & \checkmark \\
 mstlets &  & - & - & \checkmark & \checkmark \\
 mstlarima & & - & - & - & \checkmark \\\hline
 \end{tabular}
 \end{table}
 
+The `auto.arima` and `ets` functions in the forecast package are used to identify the suitable (S)ARIMA and ETS models. In order to identify the "best" forecast-model for each time series in the reference set we derive a measure based on the mean Absolute Scaled Error (MASE) and the symmetric Mean Absolute Percentage Error (MAPE). The measurement we used to identify best forecast-model is calculated as follows: For each series under the forecast-models we consider, both forecast error measures MASE and sMAPE are calculated. Then each value is standardized using the median MASE and median sMAPE calculated across the methods for each individual time series. Then the mean of scaled MASE and scaled sMAPE is calculated for each model we consider. The model corresponding to the smallest mean value for the test period is selected as the output class-label. Most of the labels given in Table \ref{classlabels} are self-explanatory labels. In STL-AR, mstlets, and mstlarima, first STL decomposition method applied to the time series and then seasonal naive method is used to forecast the seasonal component. Finally,  AR, ETS and ARIMA models are used to forecast seasonally adjusted data respectively.
+
+
+
 ### Train a random forest classifier
 
-A random forest with class priors is used to develop the classifier. We build separate random forest classifiers for yearly, quarterly, monthly, weekly, daily and hourly time series. The wrapper function called `build_rf` in the `seer` package enables the training of a random forest model and predict class labels("best" forecast-model) for new time series. 
+A random forest with class priors is used to develop the classifier. We build separate random forest classifiers for yearly, quarterly, monthly, weekly, daily and hourly time series. The wrapper function called `build_rf` in the `seer` package enables the training of a random forest and returns class labels("best" forecast-model) for each time series. 
 
 ## FFORMS framework: online phase
 
@@ -177,7 +182,7 @@ First, the corresponding features are calculated based on the full length of the
 
 # The seer package in R
 
-Table \ref{seer} summarizes the main functions implemented in the seer package related to FFORMS framework. To install the package:
+Table \ref{seer} summarizes the main functions implemented in the seer package related to the FFORMS framework. To install the package:
 
 ```{r, eval=FALSE, echo=TRUE}
 install.packages("devtools")
@@ -195,13 +200,13 @@ simulate\_arimabased & simulate time series based on ARIMA models \\
 simulate\_etsbased & simulate time series based on ETS models \\
 simulate\_mstlbased & simulate time series based on multiple seasonal decomposition approach \\
 convert\_msts & convert daily hourly time series into msts objects \\
-cal\_features & calculate corresponding features of time series \\
+cal\_features & calculate features \\
 cal\_m4measures & calculate MASE and sMAPE for a given forecast-model \\
 cal\_medianscaled & scale MASE and sMAPE by median and return the average \\
 fcast\_accuracy & calculate accuracy measures for a list of time series from the specified models\\
 prepare\_trainingset & construct the training dataframe to build a random forest\\
-build\_rf &  build a random forest and produce class labels for new time series\\
-rf\_forecast & calculate point forecasts and prediction intervals from the\\\hline
+build\_rf &  build a random forest and produce class labels\\
+rf\_forecast & calculate point forecasts and prediction intervals\\\hline
 \end{tabular}
 \end{table}
 
