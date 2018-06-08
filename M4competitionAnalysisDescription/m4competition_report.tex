@@ -572,21 +572,18 @@ mstlarima & & - & - & - & \checkmark \\\hline
 The \texttt{auto.arima} and \texttt{ets} functions in the forecast
 package are used to identify the suitable (S)ARIMA and ETS models. In
 order to identify the ``best'' forecast-model for each time series in
-the reference set we derive a measure based on the mean Absolute Scaled
-Error (MASE) and the symmetric Mean Absolute Percentage Error (MAPE).
-The measurement we used to identify best forecast-model is calculated as
-follows: For each series under the forecast-models we consider, both
-forecast error measures MASE and sMAPE are calculated. Then each value
-is standardized using the median MASE and median sMAPE calculated across
-the methods for each individual time series. Then the mean of scaled
-MASE and scaled sMAPE is calculated for each model we consider. The
-model corresponding to the smallest mean value for the test period is
-selected as the output class-label. Most of the labels given in Table
-\ref{classlabels} are self-explanatory labels. In STL-AR, mstlets, and
-mstlarima, first STL decomposition method applied to the time series and
-then seasonal naive method is used to forecast the seasonal component.
-Finally, AR, ETS and ARIMA models are used to forecast seasonally
-adjusted data respectively.
+the reference set we combine the mean Absolute Scaled Error (MASE) and
+the symmetric Mean Absolute Percentage Error (MAPE) calculated over the
+test set. More specifically, for each series both forecast error
+measures MASE and sMAPE are calculated for each of the forecast models.
+Each of these is respectively standardized by the median MASE and median
+sMAPE calculated across the methods. The model with the lowest average
+value of the scaled MASE and scaled sMAPE is selected as the output
+class-label. Most of the labels given in Table \ref{classlabels} are
+self-explanatory labels. In STL-AR, mstlets, and mstlarima, first STL
+decomposition method applied to the time series and then seasonal naive
+method is used to forecast the seasonal component. Finally, AR, ETS and
+ARIMA models are used to forecast seasonally adjusted data respectively.
 
 \subsubsection{Train a random forest
 classifier}\label{train-a-random-forest-classifier}
